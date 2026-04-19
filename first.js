@@ -8,4 +8,7 @@ http.createServer((request,response)=>{
     .on('data',chunk=>{
         body.push(chunk);
     })
+    .on('end',()=>{
+body = Buffer.concat(body).toString();
+    })
 })
