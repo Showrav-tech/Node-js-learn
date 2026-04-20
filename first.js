@@ -15,5 +15,6 @@ response.on(`error`,err=>{
 });
 response.statusCode=200;
 response.setHeader('Content-type','application/json');
+const responseBody = { headers, method, url, body };
     })
 })
