@@ -13,5 +13,7 @@ body = Buffer.concat(body).toString();
 response.on(`error`,err=>{
     console.error(err);
 });
+response.statusCode=200;
+response.setHeader('Content-type','application/json');
     })
 })
