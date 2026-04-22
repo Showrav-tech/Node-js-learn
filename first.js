@@ -9,3 +9,11 @@ fs.writeFile(
     console.log('Write complete');
   }
 );
+fs.appendFile(
+  path.join(__dirname, 'files', 'test.txt'),
+  'testing test',
+  (err) => {
+    if (err) throw err;
+    console.log('Append complete');
+  }
+);
