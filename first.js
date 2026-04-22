@@ -1,11 +1,11 @@
+const fs = require('fs');
+const path = require('path');
 
-const fs=require('fs');
-
-fs.readFile('./files/chak.txt',(err,data)=>{
-if(err) throw err;
-console.log(data.toString());
-
-})
-fs.writeFile(path.join(__dirname,'files','reply.text'),(err)=>{
-
-})
+fs.writeFile(
+  path.join(__dirname, 'files', 'reply.txt'),
+  'Hello from Node.js',
+  (err) => {
+    if (err) throw err;
+    console.log('Write complete');
+  }
+);
