@@ -17,3 +17,10 @@ fs.appendFile(
     console.log('Append complete');
   }
 );
+fs.unlink(
+  path.join(__dirname, 'files', 'test.txt'),
+  (err) => {
+    if (err) throw err;
+    console.log('File deleted successfully');
+  }
+);
