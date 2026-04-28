@@ -18,6 +18,7 @@ fs.appendFile(
   }
 );
 fs.unlink(
+  
   path.join(__dirname, 'files', 'test.txt'),
   (err) => {
     if (err) throw err;
