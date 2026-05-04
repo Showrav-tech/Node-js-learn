@@ -1,0 +1,22 @@
+{
+  "name": "node-course-2.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Showrav-tech/Node-js-learn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Showrav-tech/Node-js-learn/issues"
+  },
+  "homepage": "https://github.com/Showrav-tech/Node-js-learn#readme",
+  "dependencies": {
+    "date-fns": "^4.1.0"
+  }
+}
