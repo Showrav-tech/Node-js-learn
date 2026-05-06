@@ -8,7 +8,10 @@ const myServer = http.createServer((req, res) => {
   switch(req.url){
     case'/':res.end("HomePage");
     break
-    
+    case'/about':res.end("I am Piyush Garg");
+    break
+    default
+
   }
   });
 
