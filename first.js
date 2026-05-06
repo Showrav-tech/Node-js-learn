@@ -5,9 +5,11 @@ const myServer = http.createServer((req, res) => {
   const log = `${Date.now()}: New Req Received\n`;
 
   fs.appendFile("log.txt", log, (err,data) => {
-    if (err) {
-      console.log("Error writing file:", err);
-    }
+  switch(req.url){
+    case'/':res.end("HomePage");
+    break
+    
+  }
   });
 
   res.end("Hello From server");
