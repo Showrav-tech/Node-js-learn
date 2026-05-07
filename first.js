@@ -10,8 +10,10 @@ const myServer = http.createServer((req, res) => {
     break
     case'/about':res.end("I am Piyush Garg");
     break
-    default:
-res.end("Not found");
+      case'/Menu':res.end("Menu page");
+    break
+  
+  
   }
   });
 
