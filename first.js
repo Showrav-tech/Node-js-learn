@@ -12,7 +12,8 @@ const myServer = http.createServer((req, res) => {
     break
       case'/Menu':res.end("Menu page");
     break
-  
+  default:
+    
   
   }
   });
