@@ -1,23 +1,15 @@
-const http = require("http");
-const fs = require("fs");
+async function getData() {
+  console.log('Starting...');
+  const result = await someAsyncOperation();
+  console.log(`Result: ${result}`);
+  return result;
+}
 
-const myServer = http.createServer((req, res) => {
-  const log = `${Date.now()}: New Req Received\n`;
-
-  fs.appendFile("log.txt", log, (err,data) => {
-  switch(req.url){
-    case'/':res.end("HomePage");
-    break
-    case'/about':res.end("I am Piyush Garg");
-    break
-      case'/Menu':res.end("Menu page");
-    break
-  default:
-    
-  }
+function someAsyncOperation() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve('Operation completed'), 1000);
   });
+}
 
-  res.end("Hello From server");
-});
-
-myServer.listen(8000, () => console.log("Server Started!"));
+// Call the async function
+getData().then(data => console.log('Final data:', data));
