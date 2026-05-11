@@ -8,3 +8,5 @@ async function readFile() {
     console.error('Error reading file:', error);
   }
 }
+
+readFile();
