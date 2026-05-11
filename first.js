@@ -1,12 +1,17 @@
-const fs = require('fs').promises;
-
-async function readFile() {
-  try {
-    const data = await fs.readFile('myfile.txt', 'utf8');
-    console.log(data);
-  } catch (error) {
-    console.error('Error reading file:', error);
-  }
+// math.js (CommonJS)
+function add(a, b) {
+  return a + b;
 }
 
-readFile();
+function subtract(a, b) {
+  return a - b;
+}
+
+module.exports = {
+  add,
+  subtract
+};
+
+// app.js (CommonJS)
+const math = require('./math');
+console.log(math.add(5, 3)); // 8
