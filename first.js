@@ -1,16 +1,10 @@
-function add(a, b) {
-  return a + b;
-}
+const http=require("http");
+const fs = require("fs");
+const url =require("url");
 
-function subtract(a, b) {
-  return a - b;
-}
-
-module.exports = {
-  add,
-  subtract
-};
-
-
-const math = require('./math');
-console.log(math.add(5, 3));
+const myserver = http.createServer((req,res)=>{
+  if(req.url==="/favicon.ico")return res.end();
+  const log=`${Date.now()}: ${req.url}New Req Received\n`;
+  const myUrl=url.parse(req.url,true);
+  console.log(myUrl);
+})
