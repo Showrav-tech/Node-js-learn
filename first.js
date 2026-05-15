@@ -16,6 +16,10 @@ const myserver = http.createServer((req,res)=>{
       const username=myUrl.query.myname;
       res.end('Hi,${username}');
       break;
+      default:
+        res.end("404 Not found");
     }
-  })
-})
+
+  });
+});
+myserver.listen(8000,()=>console.log("Server Started!"));
