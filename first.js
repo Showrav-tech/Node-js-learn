@@ -31,9 +31,8 @@ function myHandler(req,res){
     });
 }
 
-const myserver = http.createServer((req, res) => {
-   
-});
+const myserver = http.createServer=http.createServer(myHandler);
+ 
 
 myserver.listen(8000, () => {
     console.log("Server Started Successfully!");
