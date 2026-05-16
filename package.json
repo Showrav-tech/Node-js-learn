@@ -5,8 +5,6 @@
   "main": "first.js",
   "scripts": {
     "start": "node first.js"
-   
-   
   },
   "repository": {
     "type": "git",
@@ -17,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Showrav-tech/Node-js-learn/issues"
   },
-  "homepage": "https://github.com/Showrav-tech/Node-js-learn#readme"
+  "homepage": "https://github.com/Showrav-tech/Node-js-learn#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
