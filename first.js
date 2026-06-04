@@ -7,7 +7,11 @@ const PORT=8000;
 app.use(express.urlencoded({extended:false}));
 
 app.use((req,res,next)=>{
-    console.log('Hello from Middleware');
+    console.log('Hello from Middleware 1');
+    next();
+});
+app.use((req,res,next)=>{
+    console.log('Hello from Middleware 2');
     next();
 })
 
