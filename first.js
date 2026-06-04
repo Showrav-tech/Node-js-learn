@@ -4,7 +4,13 @@ const app=express();
 const PORT=8000;
 
 //Middleware-plugin
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended:false}));
+
+app.use((req,res,next)=>{
+    console.log('Hello from Middleware');
+    next();
+})
+
 
 app.listen(PORT,()=> console.log(`Server Started at port :${PORT}`))
 app.get("/api/user",(req,res)=>{
