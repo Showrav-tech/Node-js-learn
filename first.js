@@ -2,6 +2,10 @@ const express =require("express");
 const users=require("./MOCK_DATA.json");
 const app=express();
 const PORT=8000;
+
+//Middleware-plugin
+app.use(express.urlencoded({extended:false}))
+
 app.listen(PORT,()=> console.log(`Server Started at port :${PORT}`))
 app.get("/api/user",(req,res)=>{
     return res.json(users);
