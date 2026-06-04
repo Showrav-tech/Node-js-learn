@@ -7,13 +7,12 @@ const PORT=8000;
 app.use(express.urlencoded({extended:false}));
 
 app.use((req,res,next)=>{
-    console.log('Hello from Middleware 1');
-    next();
+    fs.appendFile("log.txt",`${Date.now()}:${req.method}:${req.path}`,(err,data)=>{
+        next();
+    });
+  
 });
-app.use((req,res,next)=>{
-    console.log('Hello from Middleware 2');
-    next();
-})
+
 
 
 app.listen(PORT,()=> console.log(`Server Started at port :${PORT}`))
