@@ -7,7 +7,8 @@ const app =express();
 const PORT = 8000;
 //Connection Db
 
-mongoose.connect(' mongodb://127.0.0.1:27017/youtube-app-1');
+mongoose.connect(' mongodb://127.0.0.1:27017/youtube-app-1')
+.then(()=>console.log("MongoDB connected"));
 
 //Schema
 const userSchema=new mongoose.Schema({
@@ -39,6 +40,8 @@ app.use((req, res, next) => {
         next();
     });
 });
+
+
 
 // Render user list as HTML
 app.get('/users', (req, res) => {
