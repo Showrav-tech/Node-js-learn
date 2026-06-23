@@ -1,54 +1,82 @@
-const express =require("express");
-const users=require("./MOCK_DATA.json");
-const app=express();
-const PORT=8000;
+const express = require("express");
+const fs = require("fs"); 
+const users = require("./MOCK_DATA.json");
 
-//Middleware-plugin
-app.use(express.urlencoded({extended:false}));
+const app =express();
+const PORT = 8000;
 
-app.use((req,res,next)=>{
-    fs.appendFile("log.txt",`${Date.now()}:${req.method}:${req.path}`,(err,data)=>{
+app.use(express.urlencoded({ extended: false }));
+
+app.use((req, res, next) => {
+    fs.appendFile("log.txt", `\n${Date.now()}:${req.method}:${req.path}`, (err) => {
         next();
     });
-  
 });
 
-
-
-app.listen(PORT,()=> console.log(`Server Started at port :${PORT}`))
-app.get("/api/user",(req,res)=>{
-    return res.json(users);
-});
+// Render user list as HTML
 app.get('/users', (req, res) => {
     const html = `
     <ul>
-        ${users.map((user)=>`<li>${user.first_name}</li>`).join("")}
+        ${users.map((user) => `<li>${user.first_name}</li>`).join("")}
     </ul>
     `;
     res.send(html);
 });
 
-//REST API
-app.get("/api/user/",(req,res)=>{
+// Fetch all users as JSON
+app.get("/api/users", (req, res) => {
     return res.json(users);
 });
 
-app.route("/api/users/:id").get("/api/users/:id",(req,res)=>{
-const id=Number(req.params.id);
-const user=users.find((user)=>user.id===id);
-return res.json(user);
-}).put((req,res)=>{
-    res.json({status:"Pending"});
-})
+app.route("/api/users/:id")
+    .get((req, res) => {
+        const id = Number(req.params.id);
+        const user = users.find((user) => user.id === id);
+        if (!user) return res.status(404).json({ error: "User not found" });
+        return res.json(user);
+    })
+    .put((req, res) => {
+        return res.json({ status: "Pending" });
+    })
+    .delete((req, res) => {
+        return res.json({ status: "Pending" });
+    });
 
-app.post('/api/users',(req,res)=>{
-return res.json({status:"Pending"});
-}).delete((res,req)=>{
-    return res.json({status:"Pending"});
-});
-
+// Validate data and create a new user record
 app.post("/api/users",(req,res)=>{
-    return res.json({status:"pending"});
+
+    const body=req.body;
+
+    if(
+
+        !body ||
+
+        !body.first_name||
+
+        !body.last_name||
+
+        !body.email||
+
+        !body.gender||
+
+        !body.job_title
+
+    ){
+
+        return res.status(400).json({msg:"All fields are req....."});
+
+
+
+    }
+
+    users.push({...body,id:users.length+1});
+
+    fs.writeFile("./MOCK_DATA.json",JSON.stringify(user),(err,data)=>{
+
+        return res.status(201).json({status:"succes",id:users.length});
+
+    });
+
 });
 
-app.listen(PORT,()=>console.log(`Server Started at PORT 8000`));
+app.listen(PORT, () => console.log(`Server Started at PORT ${PORT}`));
