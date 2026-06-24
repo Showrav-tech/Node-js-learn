@@ -1,7 +1,7 @@
 const express = require("express");
 const fs = require("fs"); 
 const mongoose=require("mongoose");
-const users = require("./MOCK_DATA.json");
+
 
 const app =express();
 const PORT = 8000;
@@ -48,9 +48,10 @@ app.use((req, res, next) => {
 
 // Render user list as HTML
 app.get('/users', (req, res) => {
+    const allDbUsers=await User.find({});
     const html = `
     <ul>
-        ${users.map((user) => `<li>${user.first_name}</li>`).join("")}
+        ${users.map((user) => `<li>${user.firstName}-{user.email}</li>`).join("")}
     </ul>
     `;
     res.send(html);
