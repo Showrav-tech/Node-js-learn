@@ -51,7 +51,7 @@ app.get('/users', (req, res) => {
     const allDbUsers=await User.find({});
     const html = `
     <ul>
-        ${users.map((user) => `<li>${user.firstName}-{user.email}</li>`).join("")}
+        ${users.map((user) => `<li>${user.firstName}-{user.email} </li>`).join("")}
     </ul>
     `;
     res.send(html);
@@ -63,9 +63,8 @@ app.get("/api/users", (req, res) => {
 });
 
 app.route("/api/users/:id")
-    .get((req, res) => {
-        const id = Number(req.params.id);
-        const user = users.find((user) => user.id === id);
+    .get(async(req, res) => {
+     const user=await User.findById(req.params.id);
         if (!user) return res.status(404).json({ error: "User not found" });
         return res.json(user);
     })
