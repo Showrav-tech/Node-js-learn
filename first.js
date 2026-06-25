@@ -47,7 +47,7 @@ app.use((req, res, next) => {
 
 
 // Render user list as HTML
-app.get('/users', (req, res) => {
+app.get('/users', async(req, res) => {
     const allDbUsers=await User.find({});
     const html = `
     <ul>
