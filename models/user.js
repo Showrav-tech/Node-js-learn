@@ -23,3 +23,4 @@ jobTitle:{
 {timestamps:true}
 );
 const User=mongoose.model("user",userSchema);
+module.expoer=User;
